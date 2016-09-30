@@ -78,5 +78,206 @@ class Results
     private $updatedAt;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     *
+     * @return Results
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set habit1
+     *
+     * @param boolean $habit1
+     *
+     * @return Results
+     */
+    public function setHabit1($habit1)
+    {
+        $this->habit1 = $habit1;
+
+        return $this;
+    }
+
+    /**
+     * Get habit1
+     *
+     * @return boolean
+     */
+    public function getHabit1()
+    {
+        return $this->habit1;
+    }
+
+    /**
+     * Set habit2
+     *
+     * @param boolean $habit2
+     *
+     * @return Results
+     */
+    public function setHabit2($habit2)
+    {
+        $this->habit2 = $habit2;
+
+        return $this;
+    }
+
+    /**
+     * Get habit2
+     *
+     * @return boolean
+     */
+    public function getHabit2()
+    {
+        return $this->habit2;
+    }
+
+    /**
+     * Set habit3
+     *
+     * @param boolean $habit3
+     *
+     * @return Results
+     */
+    public function setHabit3($habit3)
+    {
+        $this->habit3 = $habit3;
+
+        return $this;
+    }
+
+    /**
+     * Get habit3
+     *
+     * @return boolean
+     */
+    public function getHabit3()
+    {
+        return $this->habit3;
+    }
+
+    /**
+     * Set calories
+     *
+     * @param integer $calories
+     *
+     * @return Results
+     */
+    public function setCalories($calories)
+    {
+        $this->calories = $calories;
+
+        return $this;
+    }
+
+    /**
+     * Get calories
+     *
+     * @return integer
+     */
+    public function getCalories()
+    {
+        return $this->calories;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param integer $weight
+     *
+     * @return Results
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return integer
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Results
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Results
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+}
