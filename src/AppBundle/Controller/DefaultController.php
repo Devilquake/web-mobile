@@ -16,26 +16,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $result = new Results();
-        $form = $this->createFormBuilder($result)
-            ->add('habit1', TextType::class)
-            ->add('habit2', TextType::class)
-            ->add('habit3', TextType::class)
-            ->add('calories', TextType::class)
-            ->add('weight', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Verzenden'))
-            ->getForm();
-
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($result);
-            $em->flush();
-            return $this->redirectToRoute('done');
-        } else {
-            return $this->render(':default:index.html.twig', array('form' => $form->createView()));
-        }
+        return $this->render(':default:index.html.twig');
     }
 
     /**
