@@ -20,11 +20,31 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/done", name="done")
+     * @Route("/getid/{id}", name="getid", requirements={"id": "\d+"})
      */
-    public function doneAction(Request $request)
+    public function doneAction($id)
     {
-        echo 'form submitted';
+        // get Results
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT r.userId, r.habit1, r.habit2, r.habit3 FROM AppBundle:Results r 
+                  JOIN AppBundle:UserHabits uh 
+                  JOIN AppBundle:Habits h1 
+                  JOIN AppBundle:Habits h2
+                  JOIN AppBundle:Habits h3
+                  WHERE r.userId = uh.userId 
+                  AND uh.habit1 = h1.id 
+                  AND uh.habit2 = h2.id 
+                  AND uh.habit3 = h3.id 
+                  AND r.userId = :id'
+        )->setParameter('id', $id);
+
+        $results = $query->getResult();
+
+        echo '<pre>';
+        print_r($results);
+        echo '</pre>';
+        echo '<br><br><br><br><br><br>';
         return null;
     }
 }
