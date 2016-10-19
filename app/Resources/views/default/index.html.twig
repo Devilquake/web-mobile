@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Hello World
-{% endblock %}
+    {% if success %}
+        <pre> {{ success }} </pre>
+        <h1>Record is toegevoegd</h1>
+    {% endif %}
 
-{% block stylesheets %}
+
+    <h1>test</h1>
+
 
 {% endblock %}

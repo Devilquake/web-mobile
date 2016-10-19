@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Results
@@ -25,13 +26,26 @@ class Results
      * @var integer
      *
      * @ORM\Column(name="user_id", type="integer", nullable=false)
+     *
+     * @Assert\Type("integer")
      */
     private $userId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="user_habits_id", type="integer", nullable=false)
+     *
+     * @Assert\Type("integer")
+     */
+    private $userHabitsId;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="habit_1", type="boolean", nullable=false)
+     *
+     * @Assert\Type("bool")
      */
     private $habit1;
 
@@ -39,6 +53,8 @@ class Results
      * @var boolean
      *
      * @ORM\Column(name="habit_2", type="boolean", nullable=false)
+     *
+     * @Assert\Type("bool")
      */
     private $habit2;
 
@@ -46,6 +62,8 @@ class Results
      * @var boolean
      *
      * @ORM\Column(name="habit_3", type="boolean", nullable=false)
+     *
+     * @Assert\Type("bool")
      */
     private $habit3;
 
@@ -53,6 +71,8 @@ class Results
      * @var integer
      *
      * @ORM\Column(name="calories", type="integer", nullable=false)
+     *
+     * @Assert\Type("integer")
      */
     private $calories;
 
@@ -60,6 +80,8 @@ class Results
      * @var integer
      *
      * @ORM\Column(name="weight", type="integer", nullable=false)
+     *
+     * @Assert\Type("integer")
      */
     private $weight;
 
@@ -67,15 +89,10 @@ class Results
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     *
+     * @Assert\DateTime()
      */
     private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
-     */
-    private $updatedAt;
 
 
 
@@ -111,6 +128,30 @@ class Results
     public function getUserId()
     {
         return $this->userId;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userHabitsId
+     *
+     * @return Results
+     */
+    public function setUserHabitsId($userHabitsId)
+    {
+        $this->userHabitsId = $userHabitsId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer
+     */
+    public function getUserHabitsId()
+    {
+        return $this->userHabitsId;
     }
 
     /**
@@ -255,29 +296,5 @@ class Results
     public function getCreatedAt()
     {
         return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Results
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 }

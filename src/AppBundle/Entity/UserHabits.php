@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * UserHabits
@@ -16,52 +17,48 @@ class UserHabits
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\OneToMany(targetEntity="userCurrentHabits", mappedBy="userHabits")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="user_id", type="integer", nullable=false)
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     *
+     * @Assert\Type("string")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 100
+     * )
      */
-    private $userId;
+    private $name;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="habit_1", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="habits", inversedBy="user_habits")
+     * @ORM\JoinColumn(name="habit_1", referencedColumnName="id")
      */
     private $habit1;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="habit_2", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="habits", inversedBy="user_habits")
+     * @ORM\JoinColumn(name="habit_2", referencedColumnName="id")
      */
     private $habit2;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="habit_3", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="habits", inversedBy="user_habits")
+     * @ORM\JoinColumn(name="habit_3", referencedColumnName="id")
      */
     private $habit3;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
-     */
-    private $updatedAt;
 
 
 
@@ -76,27 +73,27 @@ class UserHabits
     }
 
     /**
-     * Set userId
+     * Set name
      *
-     * @param integer $userId
+     * @param string $name
      *
      * @return UserHabits
      */
-    public function setUserId($userId)
+    public function setName($name)
     {
-        $this->userId = $userId;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get userId
+     * Get name
      *
-     * @return integer
+     * @return string
      */
-    public function getUserId()
+    public function getName()
     {
-        return $this->userId;
+        return $this->name;
     }
 
     /**
@@ -169,53 +166,5 @@ class UserHabits
     public function getHabit3()
     {
         return $this->habit3;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return UserHabits
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return UserHabits
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 }
