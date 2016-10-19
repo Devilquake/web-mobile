@@ -3,12 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Habits
  *
  * @ORM\Table(name="habits")
  * @ORM\Entity
+ * @UniqueEntity("name")
  */
 class Habits
 {
@@ -16,6 +19,7 @@ class Habits
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\OneToMany(targetEntity="user_habits", mappedBy="habits")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -25,6 +29,12 @@ class Habits
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     *
+     * @Assert\Type("string")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 100
+     * )
      */
     private $name;
 
@@ -32,22 +42,10 @@ class Habits
      * @var string
      *
      * @ORM\Column(name="description", type="text", length=65535, nullable=false)
+     *
+     * @Assert\Type("string")
      */
     private $description;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
-     */
-    private $updatedAt;
 
 
 
@@ -107,53 +105,5 @@ class Habits
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Habits
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Habits
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 }

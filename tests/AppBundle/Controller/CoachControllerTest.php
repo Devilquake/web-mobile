@@ -2,9 +2,9 @@
 
 namespace Tests\AppBundle\Controller;
 
-use AppBundle\Controller\DefaultController;
+use AppBundle\Controller\CoachController;
 
-class DefaultControllerTest extends \PHPUnit_Framework_TestCase
+class CoachControllerTest extends \PHPUnit_Framework_TestCase
 {
     public function testIndex()
     {
